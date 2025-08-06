@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Custom Drawing Order Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .form-container {
+      background: white;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    .success {
+      color: green;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .payment-info {
+      display: none;
+      margin-top: 20px;
+      background: #e8f5e9;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #c8e6c9;
+    }
+
+    .payment-info h3 {
+      margin-top: 0;
+      color: #2e7d32;
+    }
+
+    .payment-info p {
+      margin: 8px 0;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Order Your Custom Drawing</h2>
+    <form id="orderForm">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="contact">Contact (Email / WhatsApp):</label>
+      <input type="text" id="contact" required>
+
+      <label for="type">Type of Drawing:</label>
+      <select id="type" required>
+        <option value="">-- Select Type --</option>
+        <option>Pencil Sketch</option>
+        <option>Color Portrait</option>
+        <option>Watercolor Art</option>
+        <option>Digital Art</option>
+      </select>
+
+      <label for="details">Describe Your Drawing (Size, Pose, Style, etc.):</label>
+      <textarea id="details" rows="4" placeholder="Example: A3 size pencil sketch of my pet dog with name below"></textarea>
+
+      <label for="image">Upload Reference Image:</label>
+      <input type="file" id="image" accept="image/*">
+
+      <button type="submit">Place Order</button>
+    </form>
+
+    <div class="success" id="successMessage" style="display:none;">
+      🎉 Thank you! Your order has been received.
+    </div>
+
+    <div class="payment-info" id="paymentInfo">
+      <h3>💳 Payment Instructions</h3>
+      <p>Please complete the payment to confirm your order.</p>
+      <p><span class="highlight">Google Pay / PhonePe:</span> 9876543210</p>
+      <p><span class="highlight">UPI ID:</span> prithviart@upi</p>
+      <p><span class="highlight">Paytm:</span> 9876543210</p>
+      <p>After payment, please send a screenshot to your contact number or email provided above.</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const contact = document.getElementById('contact').value;
+      const type = document.getElementById('type').value;
+      const details = document.getElementById('details').value;
+
+      document.getElementById('successMessage').style.display = 'block';
+      document.getElementById('paymentInfo').style.display = 'block';
+
+      // Optional: send to backend, WhatsApp, etc.
+      document.getElementById('orderForm').reset();
+    });
+  </script>
+
+</body>
+</html>
